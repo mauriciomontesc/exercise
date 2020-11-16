@@ -63,4 +63,30 @@ feature 'Cooking cookies' do
       expect(page).to have_content '3 Cookies'
     end
   end
+
+  scenario 'Cooking a single cookie without fillings' do
+    user = create_and_signin
+    oven = user.ovens.first
+
+    visit oven_path(oven)
+
+    expect(page).to_not have_content 'Your Cookie is Ready'
+
+    click_link_or_button 'Prepare Cookie'
+    fill_in 'Fillings', with: ''
+    click_button 'Mix and bake'
+
+    expect(current_path).to eq(oven_path(oven))
+    expect(page).to have_content 'no filling'
+    expect(page).to have_content 'Your Cookie is Ready'
+
+    click_button 'Retrieve Cookie'
+    expect(page).to_not have_content 'no filling'
+    expect(page).to_not have_content 'Your Cookie is Ready'
+
+    visit root_path
+    within '.store-inventory' do
+      expect(page).to have_content '1 Cookie'
+    end
+  end
 end
