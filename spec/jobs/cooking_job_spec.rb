@@ -18,6 +18,8 @@ describe CookingJob, type: :job do
     end
 
     it 'cooked' do
+      cookie.cooked = false
+      cookie.save!
       expect {
         described_class.perform_now(cookie)
       }.to change(cookie, :cooked).from(false).to(true)

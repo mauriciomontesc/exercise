@@ -7,6 +7,12 @@
   .row
     .small-8.columns
       = f.text_field :fillings
+  .row
+    .small-8.columns
+      = f.label :amount
+  .row
+    .small-8.columns
+      = f.number_field :amount, max: 20, min: 1, value: 1
 
   .row
     .small-8.columns
