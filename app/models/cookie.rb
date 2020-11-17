@@ -4,6 +4,6 @@ class Cookie < ActiveRecord::Base
   validates :storage, presence: true
 
   def ready?
-    true
+    cooked
   end
 end
