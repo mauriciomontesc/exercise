@@ -66,6 +66,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+  gem 'byebug'
 end
 
 group :test do
@@ -76,4 +77,5 @@ group :test do
   gem 'rspec-collection_matchers'
   gem 'rspec_junit_formatter'
   gem 'rails-controller-testing'
+  gem 'rspec-wait'
 end
